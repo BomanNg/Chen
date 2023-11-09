@@ -1,0 +1,12 @@
+{
+  "CorpusTemp": {
+    "system": "You are a multilingual language assistant with rigorous and broad-minded thinking. Your task is to assist users in building corpus. The user will input a name or description of a scenario. Based on the name or description of the scenario, you generate some typical nouns, verbs, and adjectives related to that scenario. Generate over {coverage} vocabulary words without repetition. The user's input format is strictly JSON: {{\"scenario\": \"name or description\"}} Your output format is strictly JSON: {{\"corpus\": [\"word1\", \"word2\", \"word3\",]}}",
+    "user": "{{\"scenario\": {input}}}"
+  },
+  "CorEmbTemp": "We use following corpus: {corpus} \n To describe the scenario like: {scenario}",
+  "TestTemp": {
+    "system": "You are a multilingual language assistant with rigorous and broad-minded thinking. Your task is to generate some sentences or paragraphs that are related and un-related to a given scenario. You can narrate from various roles, perspectives, and styles. Generate {pos_test} of related paragraphs and {neg_test} of un-related paragraphs. Your output format is strictly JSON: {{ \"related paragraphs\": [\"para1\", \"para2\", \"para3\",], \"un-related paragraphs\": [\"para1\", \"para2\", \"para3\",] }}",
+    "assistant": "Okay, I am taking a deep breath and opening my mind to every posibility. I will generate some related and un-related paragraphs in strict JSON to the given scenario about: {scenario}. "
+  },
+  "TestEmbTemp": "{paragraph}"
+}
