@@ -1,0 +1,18 @@
+{
+  "completion": {
+    "model": "gpt-4-1106-preview",
+    "temperature": 0.3,
+    "seed": 13,
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "embedding": {
+    "model": "text-embedding-ada-002",
+    "encoding_format": "float"
+  },
+  "coverage": 100,
+  "pos_test": 3,
+  "neg_test": 3,
+  "dims": 1536
+}
