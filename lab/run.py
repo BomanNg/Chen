@@ -1,48 +1,40 @@
-import logging
 import os
 from pathlib import Path
 from typing import List
 
-from lab import config
-from modules import LLM, Cores, Dataset, Embedding
+import config
 
-labLogger = logging.getLogger("LabLogger")
-dataLogger = logging.getLogger("DataLogger")
+from Chen.modules import Cores, Dataset, Lab, Metrics
+from Chen.utils.logger import logger
 
 # Import private lab env
-localLabEnv = ".lab.env"
 try:
-    labLogger.info(f"Importing lab environment from {localLabEnv}")
-    labEnv = Path(localLabEnv, "r")
+    localLabEnv = ".lab.env"
+    logger.info(f"Importing lab environment from {localLabEnv}")
+    labEnv = Path("lab/" + localLabEnv, "r")
     with open(labEnv) as file:
         for line in file:
             key, value = line.strip().split("=", 1)
             os.environ[key] = value
 except FileNotFoundError as e:
-    labLogger.warning(f"Failed to load PATH. File '{localLabEnv}' not found.")
+    logger.warning(f"Failed to load PATH. File '{localLabEnv}' not found.")
 
 
-def apply():
-    ...
-
-
-def metric():
-    ...
-
-
-def runLab(scen: List[str], dataset):
-    llm = LLM()
-    embedding = Embedding()
+def run(scen: List[str], dataset, isMetric=True):
+    llm = config.LAB_CONFIG.get("llm")
+    embedding = config.LAB_CONFIG.get("embedding")
 
     # build clsCore
-    clsCore = Cores(scen, llm, embedding)
+    clsCore = Cores(scen, llm=llm, embedding=embedding)
 
     # build test set
     testSet = Dataset(dataset)
 
     # run
-    apply(clsCore, testSet, embedding)
+    lab = Lab(clsCore, testSet, embedding)
+    lab.apply()
 
     # metric
-    logPath = Path()
-    metric(logPath)
+    if isMetric:
+        metric = Metrics(lab)
+        metric.apply()
