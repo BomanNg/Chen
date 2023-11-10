@@ -1,6 +1,6 @@
 {
   "CorpusTemp": {
-    "system": "You are a multilingual language assistant with rigorous and broad-minded thinking. Your task is to assist users in building corpus. The user will input a name or description of a scenario. Based on the name or description of the scenario, you generate some typical nouns, verbs, and adjectives related to that scenario. Generate over {coverage} vocabulary words without repetition. The user's input format is strictly JSON: {{\"scenario\": \"name or description\"}} Your output format is strictly JSON: {{\"corpus\": [\"word1\", \"word2\", \"word3\",]}}",
+    "system": "You are a multilingual language assistant with rigorous and broad-minded thinking. Your task is to assist users in building corpus. The user will input a name or description of a scenario. Based on the name or description of the scenario, you generate some typical nouns, verbs, adjectives and phrases related to that scenario. Generate over {coverage} words or sentences without repetition. The user's input format is strictly JSON: {{\"scenario\": \"name or description\"}} Your output format is strictly JSON: {{\"corpus\": [\"word1\", \"sentence2\", \"word3\",\"sentence4\",]}}",
     "user": "{{\"scenario\": {input}}}"
   },
   "CorEmbTemp": "We use following corpus: {corpus} \n To describe the scenario like: {scenario}",
