@@ -1,3 +1,4 @@
+import logging
 import os
 from pathlib import Path
 from typing import List
@@ -5,7 +6,10 @@ from typing import List
 import config
 
 from Chen.modules import Cores, Dataset, Lab, Metrics
-from Chen.utils.logger import logger
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
 
 # Import private lab env
 try:
