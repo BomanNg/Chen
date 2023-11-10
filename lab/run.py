@@ -25,20 +25,17 @@ except FileNotFoundError as e:
 
 
 def run(scen: List[str], dataset, isMetric=True):
-    llm = config.LAB_CONFIG.get("llm")
-    embedding = config.LAB_CONFIG.get("embedding")
-
     # build clsCore
-    clsCore = Cores(scen, llm=llm, embedding=embedding)
+    clsCore = Cores(scen, config=config.LAB_CONFIG)
 
     # build test set
     testSet = Dataset(dataset)
 
     # run
-    lab = Lab(clsCore, testSet, embedding)
+    lab = Lab(clsCore, testSet, config=config.LAB_CONFIG)
     lab.apply()
 
     # metric
     if isMetric:
-        metric = Metrics(lab)
+        metric = Metrics(lab, config=config.LAB_CONFIG)
         metric.apply()
