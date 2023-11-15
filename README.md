@@ -1,6 +1,6 @@
 # Chen
 
-Chen is a cost-effective, fast, and easy-to-implement text classification algorithm.
+Chen is a Cost-effective, High-speed, Easy-to-use, Non-supervised text classification algorithm.
 
 It can build unsupervised text classifiers for various use cases with minimal data and computational requirements, solely through prompt engineering and pre-trained word embeddings. No heavy data curation or model training needed.
 
